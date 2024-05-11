@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #root {
+        width: 100%;
+        min-height: 100vh;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      time {
+        width: 90%;
+        max-width: 700px;
+        height: 200px;
+        background-color: #f1f5f9;
+        color: #475569;
+        border-radius: 8px;
+        line-height: 200px;
+        font-size: 150px;
+        text-align: center;
+        font-weight: bold;
+      }
+    </style>
+    <title>Hello React!</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script>
+      function App() {
+        const [time, setTime] = React.useState(new Date().toLocaleTimeString());
+
+        React.useEffect(function () {
+          setInterval(function () {
+            setTime(new Date().toLocaleTimeString());
+          }, 1000);
+        }, []);
+
+        return React.createElement("time", null, `${time}`);
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(React.createElement(App, null));
+    </script>
+  </body>
+</html>
